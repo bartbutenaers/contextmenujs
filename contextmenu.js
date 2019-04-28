@@ -130,7 +130,10 @@ export default function ContextMenu(menu, options){
 		return ul_outer;
 	}
 
-	this.display = function(e, target){
+	this.display = function (e, target) {
+		
+		document.body.dispatchEvent(new CustomEvent("contextmenu-close-all"));
+		
 		if(typeof target !== "undefined"){
 			self.contextTarget = target;
 		}else{
@@ -183,6 +186,7 @@ export default function ContextMenu(menu, options){
 		if(ContextUtil.getProperty(options, "close_on_click", true)){
 			requestAnimationFrame(() => { // Animation frame allows using click to open it as well.
 				window.addEventListener("click", documentClick);
+				document.body.addEventListener("contextmenu-close-all", documentClick);
 			});
 		}
 
@@ -194,6 +198,7 @@ export default function ContextMenu(menu, options){
 		e.classList.remove("display");
 		e.style.pointerEvents = "none";
 		window.removeEventListener("click", documentClick);
+		document.body.removeEventListener("contextmenu-close-all", documentClick);
 	}
 
 	function documentClick(){
