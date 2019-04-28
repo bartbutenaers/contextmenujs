@@ -178,6 +178,7 @@ export default function ContextMenu(menu, options){
 		}
 
 		menu.classList.add("display");
+		menu.style.pointerEvents = "auto";
 
 		if(ContextUtil.getProperty(options, "close_on_click", true)){
 			requestAnimationFrame(() => { // Animation frame allows using click to open it as well.
@@ -189,7 +190,9 @@ export default function ContextMenu(menu, options){
 	}
 
 	this.hide = function(){
-		document.getElementById('cm_' + num).classList.remove("display");
+		let e = document.getElementById('cm_' + num);
+		e.classList.remove("display");
+		e.style.pointerEvents = "none";
 		window.removeEventListener("click", documentClick);
 	}
 
