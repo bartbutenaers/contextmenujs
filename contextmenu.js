@@ -195,10 +195,12 @@ export default function ContextMenu(menu, options){
 
 	this.hide = function(){
 		let e = document.getElementById('cm_' + num);
-		e.classList.remove("display");
-		e.style.pointerEvents = "none";
-		window.removeEventListener("click", documentClick);
-		document.body.removeEventListener("contextmenu-close-all", documentClick);
+		if (e) { // In case the node was removed by somethign else.
+			e.classList.remove("display");
+			e.style.pointerEvents = "none";
+			window.removeEventListener("click", documentClick);
+			document.body.removeEventListener("contextmenu-close-all", documentClick);
+		}
 	}
 
 	function documentClick(){
