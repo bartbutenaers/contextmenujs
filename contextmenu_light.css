@@ -5,6 +5,7 @@
   transition: transform 0.1s;
   transform-origin: top left;
   padding: 0;
+  z-index: 1500;
 }
 
 .cm_container.display{
@@ -67,6 +68,7 @@
   opacity: 0;
   transition: opacity 0.2s;
   visibility: hidden;
+  z-index: 1500;
 }
 
 .cm_container li:hover > ul{
