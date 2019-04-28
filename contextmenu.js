@@ -1,4 +1,4 @@
-function ContextMenu(menu, options){
+export default function ContextMenu(menu, options){
 	var self = this;
 	var num = ContextMenu.count++;
 
