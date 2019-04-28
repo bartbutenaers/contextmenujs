@@ -180,7 +180,9 @@ export default function ContextMenu(menu, options){
 		menu.classList.add("display");
 
 		if(ContextUtil.getProperty(options, "close_on_click", true)){
-			window.addEventListener("click", documentClick);
+			requestAnimationFrame(() => { // Animation frame allows using click to open it as well.
+				window.addEventListener("click", documentClick);
+			});
 		}
 
 		e.preventDefault();
