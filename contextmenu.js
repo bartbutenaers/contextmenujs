@@ -59,7 +59,7 @@ export default function ContextMenu(menu, options){
 		var container = document.getElementById('cm_' + num);
 		container.innerHTML = "";
 
-		container.appendChild(renderLevel(menu));
+		container.appendChild(renderLevel(this.menu));
 	}
 
 	function renderLevel(level){
